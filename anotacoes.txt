@@ -1,0 +1,3 @@
+recapitular Object.assign (pag 42)
+
+recapitular var e let
