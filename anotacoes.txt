@@ -1,3 +1,5 @@
 recapitular Object.assign (pag 42)
 
 recapitular var e let
+
+erro página 104: o método espera uma data no formato ano-mes-dia
