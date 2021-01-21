@@ -3,3 +3,7 @@ recapitular Object.assign (pag 42)
 recapitular var e let
 
 erro página 104: o método espera uma data no formato ano-mes-dia
+
+erro página 170 - está relembrando o código de NegociacaoController, não esse model // client/app/domain/negociacoes/Negociacoes.js
+
+    abaixo também está falando de this._mensagemView, mas no código é _negociaoesView

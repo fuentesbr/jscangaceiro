@@ -17,7 +17,7 @@
         
         <div class="form-group">
             <label for="data">Data</label>
-            <input type="date" id="data" class="form-control" required autofocus/>        
+            <input type="text" id="data" class="form-control" required autofocus/>        
         </div>    
         
         <div class="form-group">
@@ -54,7 +54,67 @@
     <script src="app/ui/views/NegociacoesView.js"></script>
     <script src="app/ui/models/Mensagem.js"></script>
     <script src="app/ui/views/MensagemView.js"></script>
+    <script src="app/util/ProxyFactory.js"></script>
+    <script src="app/util/Bind.js"></script>
+
+    <script src="app/util/ApplicationException.js"></script>
+    <script src="app/ui/converters/DataInvalidaException.js"></script>
     <script src="app/app.js"></script>
+
+    <script>
+
+        //teste feio com a classe Negociacao
+        /*
+        const negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
+            get(target, prop, receiver){
+                console.log(`a propriedade ${prop} caiu na armadilha`);
+                return target[prop];
+            },
+            set(target, prop, value, receiver) {
+                console.log(`${prop} guarda ${target[prop]}, receberá ${value}`);
+                
+                //se for um objeto congelado, será ignorado
+                //target[prop] =  value;
+                
+                //retorna true se conseguiu alterar a propriedade do objeto
+                //return target[prop] == value;
+
+                //usando Reflect
+                return Reflect.set(target, prop, value);
+            }
+        });
+        negociacao._quantidade = 10;
+        negociacao._valor = 100;*/
+
+        /*const negociacoes = new Proxy(new Negociacoes(), {
+            set(target, prop, value, receiver) {
+                console.log(`${prop} guarda ${target[prop]}, receberá ${value}`);
+
+                return Reflect.set(target, prop, value);
+            }
+        });*/
+/*
+        const negociacoes = new Proxy(new Negociacoes(), {
+            get(target, prop, receiver) {
+
+                if(typeof(target[prop]) == typeof(Function) && ['adiciona', 'esvazia'].includes(prop)) {
+
+                    //retorna uma nova função com contexto dinamico, antes que o apply aplicado por padrão pelo intepretador seja chamado.
+                    return function() {
+                        console.log(`${prop} disparou a armadilha`);
+                        target[prop].aplly(target, arguments);
+                    }
+
+                } else {
+                    return target[prop];
+                }
+
+            }
+        });
+
+        //negociacoes.esvazia(); //não funciona
+        negociacoes.adiciona(new Negociacao(new Date(), 1, 100));*/
+    </script>
     
 </body>
 </html>
