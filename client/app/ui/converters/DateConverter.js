@@ -12,7 +12,7 @@ class DateConverter {
     static paraData(texto) {
 
         if(!/^\d{2}\/\d{2}\/\d{4}$/.test(texto)) 
-            throw new DataInvalidaException('');
+            throw new DataInvalidaException();
             
         return new Date(
             ...texto
